@@ -40,6 +40,99 @@
       padding: 1rem;
       border-radius: 0.5rem;
     }
+
+        .card {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            max-width: 70%;
+            margin-top: 5%;
+            margin-left:15%;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 16px;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 8px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+        }
+
+        .card-rating {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .star {
+            color: #FFD700;
+            font-size: 16px;
+        }
+
+        .recommendation {
+            font-size: 12px;
+            color: #007aff;
+            margin-top: 4px;
+        }
+
+        .card-actions {
+            margin-left: 16px;
+        }
+
+        .card-actions button {
+            background-color: #007aff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .card-actions button:hover {
+            background-color: #005bb5;
+        }
+
+        #hiddenSection {
+            /* text-align: center; */
+            margin-top: 32px;
+            padding: 16px;
+            background-color: #f4f4f4;
+        }
+
+        #hiddenSection p {
+            font-size: 18px;
+            padding: 5%;
+            color: #333;
+        }
+    
   </style>
  </head>
  <body class="text-gray-800">
@@ -274,8 +367,197 @@
     </div>
    </section>
    <!-- Result Section -->
-   <section id="hiddenSection" class="hidden text-center mt-8 p-4 bg-gray-100">
-    <p class="text-xl" style="padding: 5% !important;"> Earnshare AI is an advanced affiliate marketing bot designed to optimize and aitomate the process of earning commissions throught affiliate links using artificial intelligence, it gelps users find the bes affilate programs, track performance, and maximize revenue streams by analyzing market trends and consumer behaviour. The bot streamlines content creation, lead generation and promotional strategies, making it easier got makerters to scale their businesses with minimalefforts. By recommendations and insights, helping users effectively grow their affilate marketing ventuers.</p>
+   <section id="affilateMarketingWorld" class="hidden mt-8  bg-gray-100">
+    <div class="card">
+      <img src="https://via.placeholder.com/50" alt="Fiverr Logo">
+      <div class="card-content">
+          <div class="card-title">Fiverr Affiliates</div>
+          <p class="card-description">Earn up to $150 CPA or a hybrid model. Promote freelance services globally.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Highly recommended for beginners and pros alike.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="Bluehost Logo">
+      <div class="card-content">
+          <div class="card-title">Bluehost</div>
+          <p class="card-description">Get $65 per sale promoting top web hosting solutions.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Best for promoting hosting services with high conversion rates.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="BigCommerce Logo">
+      <div class="card-content">
+          <div class="card-title">BigCommerce</div>
+          <p class="card-description">Earn up to 200% commissions on enterprise e-commerce solutions.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Great for enterprise-level marketers and e-commerce enthusiasts.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="Amazon Logo">
+      <div class="card-content">
+          <div class="card-title">Amazon Associates</div>
+          <p class="card-description">Earn up to 10% on qualifying purchases with a vast product range.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+          </div>
+          <div class="recommendation">Perfect for content creators with a wide audience reach.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="Shopify Logo">
+      <div class="card-content">
+          <div class="card-title">Shopify Affiliate Program</div>
+          <p class="card-description">Earn $58-$2,000 for promoting e-commerce solutions.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Recommended for bloggers and e-commerce enthusiasts.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="Skillshare Logo">
+      <div class="card-content">
+          <div class="card-title">Skillshare</div>
+          <p class="card-description">Earn 40% commissions by promoting online learning memberships.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Ideal for education-focused affiliates.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="Liquid Web Logo">
+      <div class="card-content">
+          <div class="card-title">Liquid Web</div>
+          <p class="card-description">Up to 150% of first payments for advanced hosting solutions.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Highly suitable for tech-savvy affiliates.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="Hostinger Logo">
+      <div class="card-content">
+          <div class="card-title">Hostinger</div>
+          <p class="card-description">Earn 40% commissions promoting affordable web hosting services.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Best for budget-conscious web creators.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="ClickFunnels Logo">
+      <div class="card-content">
+          <div class="card-title">ClickFunnels</div>
+          <p class="card-description">Earn 40% recurring commissions on sales funnel tools.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Great for digital marketers.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
+  <div class="card">
+      <img src="https://via.placeholder.com/50" alt="CJ Affiliate Logo">
+      <div class="card-content">
+          <div class="card-title">CJ Affiliate</div>
+          <p class="card-description">Partner with top brands and earn commissions across industries.</p>
+          <div class="card-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">☆</span>
+          </div>
+          <div class="recommendation">Highly diverse affiliate options for any niche.</div>
+      </div>
+      <div class="card-actions">
+          <button>Learn More</button>
+      </div>
+  </div>
+
   </section>
   <!-- result ends here -->
    <section class="my-8 text-center relative" id="contact">
@@ -320,65 +602,62 @@
   </script>
  </body>
 </html>
-
 <script>
   // JavaScript to handle the search input and reveal hidden section
   document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
   
-    // Get the input value
+    // Get the input value and convert to lowercase for case-insensitive matching
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
   
     // Keywords or phrases to check for
-    const keywords =  [
-    'best affiliate marketing site',
-    'best affiliate marketing site in the word',
-    'best affiliate marketing in the world',
-    'best affiliate platforms',
-    'best affiliate marketing site platform in the world',
-    'best affiliate marketing platform in the world',
-    'highest paid affiliate marketing',
-    'top affiliate networks',
-    'best affiliate marketing platforms',
-    'top affiliate marketing websites',
-    'highest paying affiliate marketing sites',
-    'best affiliate networks for beginners',
-    'leading affiliate marketing programs',
-    'best affiliate marketing programs for 2024',
-    'top affiliate marketing opportunities',
-    'best affiliate networks to join',
-    'most profitable affiliate marketing platforms',
-    'best affiliate marketing platforms for bloggers',
-    'best affiliate programs to promote',
-    'best affiliate marketing networks',
-    'highest earning affiliate marketing websites',
-    'top earning affiliate marketing sites',
-    'best affiliate marketing platforms for niche sites',
-    'recommended affiliate marketing programs',
-    'best affiliate sites to make money',
-    'best affiliate networks for 2024',
-    'top affiliate marketing opportunities for influencers',
-    'best affiliate platforms for online marketing',
-    'best affiliate programs for content creators',
-    'most reliable affiliate marketing platforms',
-    'best affiliate marketing programs for SEO experts',
-    'best affiliate sites for passive income',
-    'top performing affiliate programs',
-    'best affiliate marketing opportunities for YouTubers',
-    'top affiliate networks for making money',
-    'best affiliate platforms for digital marketers',
-    'best affiliate marketing websites to promote',
-    'most successful affiliate marketing programs'
-];
+    const keywords = [
+      'best affiliate marketing site',
+      'best affiliate marketing site in the world',
+      'best affiliate marketing in the world',
+      'best affiliate platforms',
+      'best affiliate marketing site platform in the world',
+      'best affiliate marketing platform in the world',
+      'highest paid affiliate marketing',
+      'top affiliate networks',
+      'best affiliate marketing platforms',
+      'top affiliate marketing websites',
+      'highest paying affiliate marketing sites',
+      'best affiliate networks for beginners',
+      'leading affiliate marketing programs',
+      'best affiliate marketing programs for 2024',
+      'top affiliate marketing opportunities',
+      'best affiliate networks to join',
+      'most profitable affiliate marketing platforms',
+      'best affiliate marketing platforms for bloggers',
+      'best affiliate programs to promote',
+      'best affiliate marketing networks',
+      'highest earning affiliate marketing websites',
+      'top earning affiliate marketing sites',
+      'best affiliate marketing platforms for niche sites',
+      'recommended affiliate marketing programs',
+      'best affiliate sites to make money',
+      'best affiliate networks for 2024',
+      'top affiliate marketing opportunities for influencers',
+      'best affiliate platforms for online marketing',
+      'best affiliate programs for content creators',
+      'most reliable affiliate marketing platforms',
+      'best affiliate marketing programs for SEO experts',
+      'best affiliate sites for passive income',
+      'top performing affiliate programs',
+      'best affiliate marketing opportunities for YouTubers',
+      'top affiliate networks for making money',
+      'best affiliate platforms for digital marketers',
+      'best affiliate marketing websites to promote',
+      'most successful affiliate marketing programs'
+    ];
 
-  
     // Check if any keyword exists in the search input
     const matched = keywords.some(keyword => searchInput.includes(keyword.toLowerCase()));
   
     // If matched, show the hidden section
     if (matched) {
-      document.getElementById('hiddenSection').classList.remove('hidden');
+      document.getElementById('affilateMarketingWorld').classList.remove('hidden');
     }
   });
-  </script>
-  
+</script>
