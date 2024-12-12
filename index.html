@@ -1,236 +1,4 @@
-<script> require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
-const morgan = require('morgan');
-const swaggerUi = require('swagger-ui-express');
-const swaggerJsDoc = require('swagger-jsdoc');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { body, validationResult } = require('express-validator');
 
-// MongoDB Schemas
-const userSchema = new mongoose.Schema({
-  name: String,
-  email: { type: String, unique: true, index: true },
-  password: String,
-  role: { type: String, default: 'user' },
-});
-
-const platformSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  niches: [String],
-  commissionRate: String,
-  apiUrl: String,
-  joinSteps: [String], // Step-by-step guide to join the platform
-});
-
-const affiliateLinkSchema = new mongoose.Schema({
-  url: {
-    type: String,
-    required: true,
-    validate: {
-      validator: function(v) {
-        return /^(ftp|http|https):\/\/[^ "]+$/.test(v);
-      },
-      message: (props) => `${props.value} is not a valid URL!`,
-    },
-  },
-  platform: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Platform',
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-const performanceMetricSchema = new mongoose.Schema({
-  affiliateLinkId: { type: mongoose.Schema.Types.ObjectId, ref: 'AffiliateLink' },
-  clicks: { type: Number, default: 0 },
-  conversions: { type: Number, default: 0 },
-  createdAt: { type: Date, default: Date.now },
-});
-
-const User = mongoose.model('User', userSchema);
-const Platform = mongoose.model('Platform', platformSchema);
-const AffiliateLink = mongoose.model('AffiliateLink', affiliateLinkSchema);
-const PerformanceMetric = mongoose.model('PerformanceMetric', performanceMetricSchema);
-
-// Error Handling Middleware
-const errorHandler = (err, req, res, next) => {
-  console.error(err.stack);
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || 'Internal Server Error',
-  });
-};
-
-// JWT Authentication Middleware
-const authenticate = (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).json({ error: 'Access denied. No token provided.' });
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (err) {
-    res.status(400).json({ error: 'Invalid token.' });
-  }
-};
-
-const app = express();
-
-// Middleware
-app.use(bodyParser.json());
-app.use(cors({ origin: process.env.CORS_ORIGIN || 'https://your-frontend-domain.com' }));
-app.use(helmet());
-app.use(morgan('combined'));
-
-// Rate Limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // 100 requests per window
-  message: 'Too many requests, please try again later.',
-});
-app.use(limiter);
-
-// Swagger Documentation
-const swaggerOptions = {
-  swaggerDefinition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'AI Affiliate Marketing Bot API',
-      version: '1.0.0',
-      description: 'API for managing affiliate platforms, links, and recommendations',
-    },
-  },
-  apis: ['./*.js'], // Adjust the path based on your project structure
-};
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-// MongoDB Connection
-mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('MongoDB connection error:', err));
-
-// Routes
-app.post(
-  '/register',
-  [
-    body('name').notEmpty().withMessage('Name is required.'),
-    body('email').isEmail().withMessage('Valid email is required.'),
-    body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.'),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { name, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password: hashedPassword });
-
-    try {
-      await user.save();
-      res.status(201).json({ message: 'User registered successfully.' });
-    } catch (err) {
-      res.status(500).json({ error: err.message || 'User registration failed.' });
-    }
-  }
-);
-
-app.post(
-  '/login',
-  [
-    body('email').isEmail().withMessage('Valid email is required.'),
-    body('password').notEmpty().withMessage('Password is required.'),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(400).json({ error: 'Invalid email or password.' });
-    }
-
-    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
-  }
-);
-
-app.post('/platform', authenticate, async (req, res) => {
-  const { name, description, niches, commissionRate, apiUrl, joinSteps } = req.body;
-  const platform = new Platform({ name, description, niches, commissionRate, apiUrl, joinSteps });
-
-  try {
-    await platform.save();
-    res.status(201).json({ message: 'Platform created successfully.' });
-  } catch (err) {
-    res.status(500).json({ error: err.message || 'Platform creation failed.' });
-  }
-});
-
-app.get('/platforms', async (req, res) => {
-  const { search } = req.query;
-  const query = search ? { $or: [{ name: new RegExp(search, 'i') }, { niches: new RegExp(search, 'i') }] } : {};
-  
-  try {
-    const platforms = await Platform.find(query);
-    res.json(platforms);
-  } catch (err) {
-    res.status(500).json({ error: err.message || 'Error fetching platforms.' });
-  }
-});
-
-app.get('/recommendations', async (req, res) => {
-  const { niche } = req.query; // Optional filter by niche
-  const query = niche ? { niches: new RegExp(niche, 'i') } : {};
-  
-  try {
-    const platforms = await Platform.find(query).sort({ commissionRate: -1 }).limit(5); // Top 5 platforms by commission rate
-    res.json(platforms);
-  } catch (err) {
-    res.status(500).json({ error: err.message || 'Error fetching recommendations.' });
-  }
-});
-
-app.get('/platform/:id/join-steps', async (req, res) => {
-  const { id } = req.params;
-  try {
-    const platform = await Platform.findById(id);
-    if (!platform) {
-      return res.status(404).json({ error: 'Platform not found.' });
-    }
-    res.json(platform.joinSteps);
-  } catch (err) {
-    res.status(500).json({ error: err.message || 'Error fetching join steps.' });
-  }
-});
-
-// Centralized Error Handling
-app.use(errorHandler);
-
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-</script>
 
 <html lang="en">
  <head>
@@ -497,14 +265,19 @@ app.listen(PORT, () => {
      <p class="text-lg mb-4">
       Get personalized recommendations for the best and highest paid affiliate marketing platforms based on your niche and performance metrics.
      </p>
-     <form class="space-y-4">
-      <input class="w-full p-2 border border-gray-300 rounded" placeholder="Enter your niche or keywords..." type="text"/>
-      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-       Search
+     <form id="searchForm" class="space-y-4">
+      <input id="searchInput" class="w-full p-2 border border-gray-300 rounded" placeholder="Enter your niche or keywords..." type="text"/>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Search
       </button>
-     </form>
+    </form>
     </div>
    </section>
+   <!-- Result Section -->
+   <section id="hiddenSection" class="hidden text-center mt-8 p-4 bg-gray-100">
+    <p class="text-xl" style="padding: 5% !important;"> Earnshare AI is an advanced affiliate marketing bot designed to optimize and aitomate the process of earning commissions throught affiliate links using artificial intelligence, it gelps users find the bes affilate programs, track performance, and maximize revenue streams by analyzing market trends and consumer behaviour. The bot streamlines content creation, lead generation and promotional strategies, making it easier got makerters to scale their businesses with minimalefforts. By recommendations and insights, helping users effectively grow their affilate marketing ventuers.</p>
+  </section>
+  <!-- result ends here -->
    <section class="my-8 text-center relative" id="contact">
     <img alt="Technology background with AI elements" class="absolute inset-0 w-full h-full object-cover opacity-20" height="1080" src="https://storage.googleapis.com/a1aa/image/wgXzgvF6H2KELxqtgwOaQpCuQaYFbCl9dlqjqWIwgbK8FceJA.jpg" width="1920"/>
     <div class="relative z-10">
@@ -547,3 +320,65 @@ app.listen(PORT, () => {
   </script>
  </body>
 </html>
+
+<script>
+  // JavaScript to handle the search input and reveal hidden section
+  document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+  
+    // Get the input value
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+  
+    // Keywords or phrases to check for
+    const keywords =  [
+    'best affiliate marketing site',
+    'best affiliate marketing site in the word',
+    'best affiliate marketing in the world',
+    'best affiliate platforms',
+    'best affiliate marketing site platform in the world',
+    'best affiliate marketing platform in the world',
+    'highest paid affiliate marketing',
+    'top affiliate networks',
+    'best affiliate marketing platforms',
+    'top affiliate marketing websites',
+    'highest paying affiliate marketing sites',
+    'best affiliate networks for beginners',
+    'leading affiliate marketing programs',
+    'best affiliate marketing programs for 2024',
+    'top affiliate marketing opportunities',
+    'best affiliate networks to join',
+    'most profitable affiliate marketing platforms',
+    'best affiliate marketing platforms for bloggers',
+    'best affiliate programs to promote',
+    'best affiliate marketing networks',
+    'highest earning affiliate marketing websites',
+    'top earning affiliate marketing sites',
+    'best affiliate marketing platforms for niche sites',
+    'recommended affiliate marketing programs',
+    'best affiliate sites to make money',
+    'best affiliate networks for 2024',
+    'top affiliate marketing opportunities for influencers',
+    'best affiliate platforms for online marketing',
+    'best affiliate programs for content creators',
+    'most reliable affiliate marketing platforms',
+    'best affiliate marketing programs for SEO experts',
+    'best affiliate sites for passive income',
+    'top performing affiliate programs',
+    'best affiliate marketing opportunities for YouTubers',
+    'top affiliate networks for making money',
+    'best affiliate platforms for digital marketers',
+    'best affiliate marketing websites to promote',
+    'most successful affiliate marketing programs'
+];
+
+  
+    // Check if any keyword exists in the search input
+    const matched = keywords.some(keyword => searchInput.includes(keyword.toLowerCase()));
+  
+    // If matched, show the hidden section
+    if (matched) {
+      document.getElementById('hiddenSection').classList.remove('hidden');
+    }
+  });
+  </script>
+  
