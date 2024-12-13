@@ -367,7 +367,7 @@
     </div>
    </section>
    <!-- Result Section -->
-   <section id="affilateMarketingWorld" class="hidden mt-8  bg-gray-100">
+   <section id="affilateMarketingWorld" class="affiliate-section hidden mt-8  bg-gray-100">
     <div class="card">
       <img src="https://via.placeholder.com/50" alt="Fiverr Logo">
       <div class="card-content">
@@ -561,7 +561,7 @@
   </section>
   <!-- result ends here -->
      <!-- Result Section -->
-     <section id="AffiliateMarketingNigeria" class="hidden mt-8 bg-gray-100">
+     <section id="AffiliateMarketingNigeria" class="affiliate-section hidden mt-8 bg-gray-100">
       <div class="card">
           <img src="https://via.placeholder.com/50" alt="Jumia Affiliate Program">
           <div class="card-content">
@@ -734,7 +734,7 @@
       </div>
     
     </section>
-    <section id="affiliateMarketingAfrica" class="hidden mt-8 bg-gray-100">
+    <section id="affiliateMarketingAfrica" class="affiliate-section hidden mt-8 bg-gray-100">
     <div class="card">
         <img src="https://via.placeholder.com/50" alt="Jumia Logo">
         <div class="card-content">
@@ -868,7 +868,7 @@
         </div>
     </div>
 </section>
-<section id="affiliateMarketingGhana" class="hidden mt-8 bg-gray-100">
+<section id="affiliateMarketingGhana" class="affiliate-section hidden mt-8 bg-gray-100">
     <div class="card">
         <img src="https://via.placeholder.com/50" alt="Jumia Ghana Logo">
         <div class="card-content">
@@ -983,7 +983,7 @@
         </div>
     </div>
 </section>
-<section id="affiliateMarketingZimbabwe" class="hidden mt-8 bg-gray-100">
+<section id="affiliateMarketingZimbabwe" class="affiliate-section hidden mt-8 bg-gray-100">
     <div class="card">
         <img src="https://via.placeholder.com/50" alt="Jumia Zimbabwe Logo">
         <div class="card-content">
@@ -1136,7 +1136,7 @@
         </div>
     </div>
 </section>
-<section id="affiliateMarketingTanzania" class="hidden mt-8 bg-gray-100">
+<section id="affiliateMarketingTanzania" class="affiliate-section hidden mt-8 bg-gray-100">
     <div class="card">
         <img src="https://via.placeholder.com/50" alt="Jumia Tanzania Logo">
         <div class="card-content">
@@ -1353,391 +1353,357 @@
  </body>
 </html>
 <script>
-  // JavaScript to handle the search input and reveal hidden sections
-  document.getElementById('searchForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    // JavaScript to handle the search input and reveal hidden section
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
   
-    // Get the input value and convert to lowercase for case-insensitive matching
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      // Get the input value and convert to lowercase for case-insensitive matching
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
   
-    // Keywords for affiliate marketing globally
-    const globalKeywords = [
-      'best affiliate marketing site',
-      'best affiliate marketing site in the world',
-      'top affiliate marketing programs',
-      'high paying affiliate programs',
-      'best affiliate programs worldwide',
-      'how to make money with affiliate marketing',
-      'affiliate marketing for beginners',
-      'top global affiliate marketing platforms',
-      'best affiliate marketing websites',
-      'affiliate marketing offers',
-      'global affiliate marketing',
-      'how to succeed in affiliate marketing',
-      'best affiliate offers',
-      'affiliate marketing trends',
-      'highest paying affiliate marketing programs',
-      'affiliate marketing networks',
-      'affiliate marketing strategies',
-      'affiliates earning top commissions',
-      'affiliate marketing resources',
-      'affiliate marketing tools',
-      'affiliate marketing tips',
-      'affiliate program networks',
-      'affiliate marketing with high returns',
-      'earning with affiliate marketing',
-      'top affiliate marketing companies',
-      'affiliate marketing 101',
-      'affiliate marketing websites that pay well',
-      'best affiliate programs for 2024',
-      'how to become an affiliate marketer',
-      'high paying affiliate marketing niches',
-      'affiliate marketing in 2024',
-      'affiliate marketing for bloggers',
-      'best affiliate marketing opportunities',
-      'affiliate programs with recurring commissions',
-      'top affiliate networks',
-      'affiliate marketing for social media influencers',
-      'affiliate marketing offers 2024',
-      'best affiliate networks',
-      'promote affiliate products online',
-      'earn passive income with affiliate marketing',
-      'affiliate program opportunities',
-      'highest paying affiliate products',
-      'affiliate marketing income potential',
-      'high commission affiliate programs',
-      'affiliate marketing conversion rates',
-      'affiliate network sign-up',
-      'affiliate marketing earnings report',
-      'affiliate marketing strategies for success',
-      'best affiliate programs for beginners',
-      'affiliate marketing on social media',
-      'best affiliate marketing platforms for bloggers',
-      'affiliate programs for digital products',
-      'high return affiliate programs',
-      'affiliate marketing through email campaigns',
-      'affiliates working with top brands',
-      'how affiliate marketers make money',
-      'promote products and earn commissions',
-      'best affiliate marketing sites to join',
-      'how to promote affiliate links effectively',
-      'promote affiliate products on youtube',
-      'affiliate marketing success stories',
-      'affiliate program types',
-      'top online affiliate marketing programs',
-      'best affiliate programs for influencers',
-      'promote affiliate links on websites',
-      'affiliate marketing with minimal investment',
-      'affiliate marketing partnerships',
-      'affiliate program benefits',
-      'how to maximize affiliate commissions',
-      'best affiliate platforms for earning',
-      'how to choose the right affiliate products',
-      'affiliate marketing niches to target',
-      'successful affiliate marketers',
-      'affiliate marketing advertising tips',
-      'affiliate marketing basics',
-      'affiliate marketing vs dropshipping',
-      'affiliates earning top commissions',
-      'affiliate marketing in 2024',
-      'best affiliate programs for earning',
-      'affiliate marketing success metrics',
-      'affiliate marketers and content creation',
-      'affiliate marketing campaign management',
-      'best affiliate marketers worldwide',
-      'how to grow affiliate income',
-      'affiliate marketing websites',
-      'best affiliate programs for high earnings',
-      'affiliate marketing products',
-      'digital affiliate marketing',
-      'best affiliate platforms to join',
-      'affiliate marketing for online business',
-      'affiliates working with top brands',
-      'affiliate marketing basics for beginners',
-      'best affiliate networks for social media',
-      'affiliate marketing with minimal risk',
-      'best affiliate programs for high income',
-      'how to manage affiliate marketing campaigns',
-      'affiliate marketing for niche products',
-      'how to become an affiliate marketer fast',
-      'affiliate marketers in 2024',
-      'affiliate marketing with high payouts',
-      'affiliate marketing for experienced marketers',
-      'earn money promoting affiliate links',
-      'top paid affiliate marketing offers',
-      'affiliate marketing advertising strategies',
-      'how to find affiliate marketing offers',
-      'affiliate marketing without a website',
-      'how affiliate marketers make money',
-      'best affiliate programs for experienced marketers',
-      'promote affiliate offers',
-      'affiliate marketing opportunities 2024',
-      'top affiliate networks 2024',
-      'highly profitable affiliate marketing programs',
-      'affiliates making top money online',
-      'affiliate marketing for email marketing',
-      'affiliate marketing business',
-      'affiliate marketing income for beginners',
-      'earning affiliate commissions'
-    ];
+      // Keywords or phrases to check for
+      const keywords = [
+        'affiliate marketing africa',
+        'best affiliate programs africa',
+        'affiliate marketing opportunities in africa',
+        'top affiliate marketing platforms africa',
+        'affiliate programs for africans',
+        'affiliate marketing networks in africa',
+        'how to start affiliate marketing in africa',
+        'affiliate marketing trends in africa',
+        'best paying affiliate programs africa',
+        'affiliate marketing opportunities for africans',
+        'top earning affiliate marketing programs in africa',
+        'how affiliate marketing works in africa',
+        'affiliate marketing for beginners in africa',
+        'affiliate marketers in africa',
+        'affiliate marketing companies africa',
+        'how to promote affiliate products in africa',
+        'best affiliate networks in africa',
+        'affiliate marketing for african bloggers',
+        'affiliate marketing for african influencers',
+        'best affiliate offers in africa',
+        'affiliate marketing platforms for africans',
+        'affiliate marketing tips africa',
+        'africa affiliate marketing platforms',
+        'top affiliate marketers in africa',
+        'how to make money with affiliate marketing in africa'
+      ];
   
-    // Keywords for Nigeria-specific affiliate marketing
-    const nigeriaKeywords = [
-      'affiliate marketing nigeria',
-      'nigeria affiliate marketing platforms',
-      'top affiliate programs nigeria',
-      'highest paying affiliate programs nigeria',
-      'affiliate marketing in nigeria',
-      'best affiliate programs in nigeria',
-      'how to start affiliate marketing in nigeria',
-      'nigerian affiliate marketing programs',
-      'affiliate marketing websites nigeria',
-      'promote affiliate products nigeria',
-      'affiliate marketing companies nigeria',
-      'best affiliate offers nigeria',
-      'affiliate marketing networks in nigeria',
-      'affiliate marketing nigeria opportunities',
-      'affiliate marketing jobs nigeria',
-      'affiliate marketers nigeria',
-      'affiliate marketing trends nigeria',
-      'affiliate marketing tips nigeria',
-      'nigerian affiliate marketing success stories',
-      'best paying affiliate programs nigeria',
-      'highly rated affiliate programs nigeria',
-      'affiliate marketing earning potential nigeria',
-      'top affiliate marketing platforms in nigeria',
-      'best affiliate marketers nigeria',
-      'nigeria affiliate marketing success',
-      'affiliate marketing commission nigeria',
-      'affiliate marketing nigeria networks',
-      'how to promote affiliate products nigeria',
-      'best affiliate networks nigeria',
-      'affiliate marketing affiliate programs nigeria',
-      'affiliate marketers making money nigeria',
-      'affiliate program opportunities nigeria',
-      'affiliate marketing 2024 nigeria',
-      'best affiliate marketing strategies nigeria',
-      'promote products and earn in nigeria',
-      'affiliate marketing opportunities nigeria',
-      'earning affiliate commissions nigeria',
-      'best paying affiliate programs nigeria 2024',
-      'affiliate marketing beginner guide nigeria',
-      'affiliate program sign-up nigeria',
-      'top earning affiliate programs nigeria',
-      'affiliate marketing tools nigeria',
-      'affiliate marketing platforms nigeria',
-      'affiliate programs nigeria that work',
-      'how to make money with affiliate marketing nigeria',
-      'affiliate marketing networks nigeria',
-      'best affiliate sites in nigeria',
-      'affiliate income nigeria',
-      'nigeria affiliate income',
-      'affiliate marketers income nigeria',
-      'best affiliate commissions nigeria',
-      'affiliate marketing websites for nigeria',
-      'top affiliate products nigeria',
-      'affiliate program sign-up nigeria',
-      'affiliate programs in nigeria',
-      'affiliate marketing techniques nigeria',
-      'affiliate marketing tips nigeria',
-      'affiliate marketers earning big in nigeria',
-      'affiliate marketing program nigeria',
-      'affiliate marketing for beginners nigeria',
-      'nigeria affiliate marketing companies'
-    ];
+      const nigeriaKeywords = [
+        'affiliate marketing nigeria',
+        'nigeria affiliate marketing platforms',
+        'top affiliate programs nigeria',
+        'highest paying affiliate programs nigeria',
+        'affiliate marketing in nigeria',
+        'best affiliate programs in nigeria',
+        'how to start affiliate marketing in nigeria',
+        'nigerian affiliate marketing programs',
+        'affiliate marketing websites nigeria',
+        'promote affiliate products nigeria',
+        'affiliate marketing companies nigeria',
+        'best affiliate offers nigeria',
+        'affiliate marketing networks in nigeria',
+        'affiliate marketing nigeria opportunities',
+        'affiliate marketing jobs nigeria',
+        'affiliate marketers nigeria',
+        'affiliate marketing trends nigeria',
+        'affiliate marketing tips nigeria',
+        'nigerian affiliate marketing success stories',
+        'best paying affiliate programs nigeria',
+        'highly rated affiliate programs nigeria',
+        'affiliate marketing earning potential nigeria',
+        'top affiliate marketing platforms in nigeria',
+        'best affiliate marketers nigeria',
+        'nigeria affiliate marketing success',
+        'affiliate marketing commission nigeria',
+        'affiliate marketing nigeria networks',
+        'how to promote affiliate products nigeria',
+        'best affiliate networks nigeria',
+        'affiliate marketing affiliate programs nigeria',
+        'affiliate marketers making money nigeria',
+        'affiliate program opportunities nigeria',
+        'affiliate marketing 2024 nigeria',
+        'best affiliate marketing strategies nigeria',
+        'promote products and earn in nigeria',
+        'affiliate marketing opportunities nigeria',
+        'earning affiliate commissions nigeria',
+        'best paying affiliate programs nigeria 2024',
+        'affiliate marketing beginner guide nigeria',
+        'affiliate program sign-up nigeria',
+        'top earning affiliate programs nigeria',
+        'affiliate marketing tools nigeria',
+        'affiliate marketing platforms nigeria',
+        'affiliate programs nigeria that work',
+        'how to make money with affiliate marketing nigeria',
+        'affiliate marketing networks nigeria',
+        'best affiliate sites in nigeria',
+        'affiliate income nigeria',
+        'nigeria affiliate income',
+        'affiliate marketers income nigeria',
+        'best affiliate commissions nigeria',
+        'affiliate marketing websites for nigeria',
+        'top affiliate products nigeria',
+        'affiliate program sign-up nigeria',
+        'affiliate programs in nigeria',
+        'affiliate marketing techniques nigeria',
+        'affiliate marketing tips nigeria',
+        'affiliate marketers earning big in nigeria',
+        'affiliate marketing program nigeria',
+        'affiliate marketing for beginners nigeria',
+        'nigeria affiliate marketing companies'
+      ];
   
-    // Keywords for Tanzania-specific affiliate marketing
-    const tanzaniaKeywords = [
-      'affiliate marketing tanzania',
-      'tanzania affiliate marketing platforms',
-      'top affiliate programs tanzania',
-      'highest paying affiliate programs tanzania',
-      'affiliate marketing in tanzania',
-      'best affiliate programs in tanzania',
-      'how to start affiliate marketing in tanzania',
-      'tanzanian affiliate marketing programs',
-      'affiliate marketing websites tanzania',
-      'promote affiliate products tanzania',
-      'affiliate marketing companies tanzania',
-      'best affiliate offers tanzania',
-      'affiliate marketing networks in tanzania',
-      'affiliate marketing tanzania opportunities',
-      'affiliate marketing jobs tanzania',
-      'affiliate marketers tanzania',
-      'affiliate marketing trends tanzania',
-      'affiliate marketing tips tanzania',
-      'tanzanian affiliate marketing success stories',
-      'best paying affiliate programs tanzania',
-      'highly rated affiliate programs tanzania',
-      'affiliate marketing earning potential tanzania',
-      'top affiliate marketing platforms in tanzania',
-      'best affiliate marketers tanzania',
-      'tanzania affiliate marketing success',
-      'affiliate marketing commission tanzania',
-      'affiliate marketing tanzania networks',
-      'how to promote affiliate products tanzania',
-      'best affiliate networks tanzania',
-      'affiliate marketing affiliate programs tanzania',
-      'affiliate marketers making money tanzania',
-      'affiliate program opportunities tanzania',
-      'affiliate marketing 2024 tanzania',
-      'best affiliate marketing strategies tanzania',
-      'promote products and earn in tanzania',
-      'affiliate marketing opportunities tanzania',
-      'earning affiliate commissions tanzania',
-      'best paying affiliate programs tanzania 2024',
-      'affiliate marketing beginner guide tanzania',
-      'affiliate program sign-up tanzania',
-      'top earning affiliate programs tanzania',
-      'affiliate marketing tools tanzania',
-      'affiliate marketing platforms tanzania',
-      'affiliate programs tanzania that work',
-      'how to make money with affiliate marketing tanzania',
-      'affiliate marketing networks tanzania',
-      'best affiliate sites in tanzania',
-      'affiliate income tanzania',
-      'tanzania affiliate income',
-      'affiliate marketers income tanzania',
-      'best affiliate commissions tanzania',
-      'affiliate marketing websites for tanzania',
-      'top affiliate products tanzania',
-      'affiliate program sign-up tanzania',
-      'affiliate programs in tanzania',
-      'affiliate marketing techniques tanzania',
-      'affiliate marketing tips tanzania',
-      'affiliate marketers earning big in tanzania',
-      'affiliate marketing program tanzania',
-      'affiliate marketing for beginners tanzania',
-      'tanzania affiliate marketing companies'
-    ];
+      const tanzaniaKeywords = [
+        'affiliate marketing tanzania',
+        'tanzania affiliate marketing platforms',
+        'top affiliate programs tanzania',
+        'highest paying affiliate programs tanzania',
+        'affiliate marketing in tanzania',
+        'best affiliate programs in tanzania',
+        'how to start affiliate marketing in tanzania',
+        'tanzanian affiliate marketing programs',
+        'affiliate marketing websites tanzania',
+        'promote affiliate products tanzania',
+        'affiliate marketing companies tanzania',
+        'best affiliate offers tanzania',
+        'affiliate marketing networks in tanzania',
+        'affiliate marketing tanzania opportunities',
+        'affiliate marketing jobs tanzania',
+        'affiliate marketers tanzania',
+        'affiliate marketing trends tanzania',
+        'affiliate marketing tips tanzania',
+        'tanzanian affiliate marketing success stories',
+        'best paying affiliate programs tanzania',
+        'highly rated affiliate programs tanzania',
+        'affiliate marketing earning potential tanzania',
+        'top affiliate marketing platforms in tanzania',
+        'best affiliate marketers tanzania',
+        'tanzania affiliate marketing success',
+        'affiliate marketing commission tanzania',
+        'affiliate marketing tanzania networks',
+        'how to promote affiliate products tanzania',
+        'best affiliate networks tanzania',
+        'affiliate marketing affiliate programs tanzania',
+        'affiliate marketers making money tanzania',
+        'affiliate program opportunities tanzania',
+        'affiliate marketing 2024 tanzania',
+        'best affiliate marketing strategies tanzania',
+        'promote products and earn in tanzania',
+        'affiliate marketing opportunities tanzania',
+        'earning affiliate commissions tanzania',
+        'best paying affiliate programs tanzania 2024',
+        'affiliate marketing beginner guide tanzania',
+        'affiliate program sign-up tanzania',
+        'top earning affiliate programs tanzania',
+        'affiliate marketing tools tanzania',
+        'affiliate marketing platforms tanzania',
+        'affiliate programs tanzania that work',
+        'how to make money with affiliate marketing tanzania',
+        'affiliate marketing networks tanzania',
+        'best affiliate sites in tanzania',
+        'affiliate income tanzania',
+        'tanzania affiliate income',
+        'affiliate marketers income tanzania',
+        'best affiliate commissions tanzania',
+        'affiliate marketing websites for tanzania',
+        'top affiliate products tanzania',
+        'affiliate program sign-up tanzania',
+        'affiliate programs in tanzania',
+        'affiliate marketing techniques tanzania',
+        'affiliate marketing tips tanzania',
+        'affiliate marketers earning big in tanzania',
+        'affiliate marketing program tanzania',
+        'affiliate marketing for beginners tanzania',
+        'tanzania affiliate marketing companies'
+      ];
   
-    // Keywords for Ghana-specific affiliate marketing
-    const ghanaKeywords = [
-      'affiliate marketing ghana',
-      'ghana affiliate marketing platforms',
-      'top affiliate programs ghana',
-      'highest paying affiliate programs ghana',
-      'affiliate marketing in ghana',
-      'best affiliate programs in ghana',
-      'how to start affiliate marketing in ghana',
-      'ghana affiliate marketing programs',
-      'affiliate marketing websites ghana',
-      'promote affiliate products ghana',
-      'affiliate marketing companies ghana',
-      'best affiliate offers ghana',
-      'affiliate marketing networks in ghana',
-      'affiliate marketing ghana opportunities',
-      'affiliate marketing jobs ghana',
-      'affiliate marketers ghana',
-      'affiliate marketing trends ghana',
-      'affiliate marketing tips ghana',
-      'ghana affiliate marketing success stories',
-      'best paying affiliate programs ghana',
-      'highly rated affiliate programs ghana',
-      'affiliate marketing earning potential ghana',
-      'top affiliate marketing platforms in ghana',
-      'best affiliate marketers ghana',
-      'ghana affiliate marketing success',
-      'affiliate marketing commission ghana',
-      'affiliate marketing ghana networks',
-      'how to promote affiliate products ghana',
-      'best affiliate networks ghana',
-      'affiliate marketing affiliate programs ghana',
-      'affiliate marketers making money ghana',
-      'affiliate program opportunities ghana',
-      'affiliate marketing 2024 ghana',
-      'best affiliate marketing strategies ghana',
-      'promote products and earn in ghana',
-      'affiliate marketing opportunities ghana',
-      'earning affiliate commissions ghana',
-      'best paying affiliate programs ghana 2024',
-      'affiliate marketing beginner guide ghana',
-      'affiliate program sign-up ghana',
-      'top earning affiliate programs ghana',
-      'affiliate marketing tools ghana',
-      'affiliate marketing platforms ghana',
-      'affiliate programs ghana that work',
-      'how to make money with affiliate marketing ghana',
-      'affiliate marketing networks ghana',
-      'best affiliate sites in ghana',
-      'affiliate income ghana',
-      'ghana affiliate income',
-      'affiliate marketers income ghana',
-      'best affiliate commissions ghana',
-      'affiliate marketing websites for ghana',
-      'top affiliate products ghana',
-      'affiliate program sign-up ghana',
-      'affiliate programs in ghana',
-      'affiliate marketing techniques ghana',
-      'affiliate marketing tips ghana',
-      'affiliate marketers earning big in ghana',
-      'affiliate marketing program ghana',
-      'affiliate marketing for beginners ghana',
-      'ghana affiliate marketing companies'
-    ];
-
-    // Keywords for Africa-specific affiliate marketing
-    const africaKeywords = [
-      'affiliate marketing africa',
-      'best affiliate programs africa',
-      'affiliate marketing opportunities in africa',
-      'top affiliate marketing platforms africa',
-      'affiliate programs for africans',
-      'affiliate marketing networks in africa',
-      'how to start affiliate marketing in africa',
-      'affiliate marketing trends in africa',
-      'best paying affiliate programs africa',
-      'affiliate marketing opportunities for africans',
-      'top earning affiliate marketing programs in africa',
-      'how affiliate marketing works in africa',
-      'affiliate marketing for beginners in africa',
-      'affiliate marketers in africa',
-      'affiliate marketing companies africa',
-      'how to promote affiliate products in africa',
-      'best affiliate networks in africa',
-      'affiliate marketing for african bloggers',
-      'affiliate marketing for african influencers',
-      'best affiliate offers in africa',
-      'affiliate marketing platforms for africans',
-      'affiliate marketing tips africa',
-      'africa affiliate marketing platforms',
-      'top affiliate marketers in africa',
-      'how to make money with affiliate marketing in africa'
-    ];
-
-    // Check if input matches global keywords
-    const matchedGlobal = globalKeywords.some(keyword => searchInput.includes(keyword));
-    // Check if input matches Nigeria-specific keywords
-    const matchedNigeria = nigeriaKeywords.some(keyword => searchInput.includes(keyword));
-    // Check if input matches Tanzania-specific keywords
-    const matchedTanzania = tanzaniaKeywords.some(keyword => searchInput.includes(keyword));
-    // Check if input matches Ghana-specific keywords
-    const matchedGhana = ghanaKeywords.some(keyword => searchInput.includes(keyword));
-    // Check if input matches Zimbabwe-specific keywords
-    const matchedZimbabwe = zimbabweKeywords.some(keyword => searchInput.includes(keyword));
-    // Check if input matches Africa-specific keywords
-    const matchedAfrica = africaKeywords.some(keyword => searchInput.includes(keyword));
+      const ghanaKeywords = [
+        'affiliate marketing ghana',
+        'ghana affiliate marketing platforms',
+        'top affiliate programs ghana',
+        'highest paying affiliate programs ghana',
+        'affiliate marketing in ghana',
+        'best affiliate programs in ghana',
+        'how to start affiliate marketing in ghana',
+        'ghana affiliate marketing programs',
+        'affiliate marketing websites ghana',
+        'promote affiliate products ghana',
+        'affiliate marketing companies ghana',
+        'best affiliate offers ghana',
+        'affiliate marketing networks in ghana',
+        'affiliate marketing ghana opportunities',
+        'affiliate marketing jobs ghana',
+        'affiliate marketers ghana',
+        'affiliate marketing trends ghana',
+        'affiliate marketing tips ghana',
+        'ghana affiliate marketing success stories',
+        'best paying affiliate programs ghana',
+        'highly rated affiliate programs ghana',
+        'affiliate marketing earning potential ghana',
+        'top affiliate marketing platforms in ghana',
+        'best affiliate marketers ghana',
+        'ghana affiliate marketing success',
+        'affiliate marketing commission ghana',
+        'affiliate marketing ghana networks',
+        'how to promote affiliate products ghana',
+        'best affiliate networks ghana',
+        'affiliate marketing affiliate programs ghana',
+        'affiliate marketers making money ghana',
+        'affiliate program opportunities ghana',
+        'affiliate marketing 2024 ghana',
+        'best affiliate marketing strategies ghana',
+        'promote products and earn in ghana',
+        'affiliate marketing opportunities ghana',
+        'earning affiliate commissions ghana',
+        'best paying affiliate programs ghana 2024',
+        'affiliate marketing beginner guide ghana',
+        'affiliate program sign-up ghana',
+        'top earning affiliate programs ghana',
+        'affiliate marketing tools ghana',
+        'affiliate marketing platforms ghana',
+        'affiliate programs ghana that work',
+        'how to make money with affiliate marketing ghana',
+        'affiliate marketing networks ghana',
+        'best affiliate sites in ghana',
+        'affiliate income ghana',
+        'ghana affiliate income',
+        'affiliate marketers income ghana',
+        'best affiliate commissions ghana',
+        'affiliate marketing websites for ghana',
+        'top affiliate products ghana',
+        'affiliate program sign-up ghana',
+        'affiliate programs in ghana',
+        'affiliate marketing techniques ghana',
+        'affiliate marketing tips ghana',
+        'affiliate marketers earning big in ghana',
+        'affiliate marketing program ghana',
+        'affiliate marketing for beginners ghana',
+        'ghana affiliate marketing companies'
+      ];
   
-    // Show respective sections based on match
-    if (matchedGlobal) {
-      document.getElementById('affilateMarketingWorld').classList.remove('hidden');
-    }
-    if (matchedNigeria) {
-      document.getElementById('AffiliateMarketingNigeria').classList.remove('hidden');
-    }
-    if (matchedTanzania) {
-      document.getElementById('affiliateMarketingTanzania').classList.remove('hidden');
-    }
-    if (matchedGhana) {
-      document.getElementById('affiliateMarketingGhana').classList.remove('hidden');
-    }
-    if (matchedZimbabwe) {
-      document.getElementById('affiliateMarketingZimbabwe').classList.remove('hidden');
-    }
-    if (matchedAfrica) {
-      document.getElementById('affiliateMarketingAfrica').classList.remove('hidden');
-    }
-  });
-</script>
+      const africaKeywords = [
+        'affiliate marketing africa',
+        'best affiliate programs africa',
+        'affiliate marketing opportunities in africa',
+        'top affiliate marketing platforms africa',
+        'affiliate programs for africans',
+        'affiliate marketing networks in africa',
+        'how to start affiliate marketing in africa',
+        'affiliate marketing trends in africa',
+        'best paying affiliate programs africa',
+        'affiliate marketing opportunities for africans',
+        'top earning affiliate marketing programs in africa',
+        'how affiliate marketing works in africa',
+        'affiliate marketing for beginners in africa',
+        'affiliate marketers in africa',
+        'affiliate marketing companies africa',
+        'how to promote affiliate products in africa',
+        'best affiliate networks in africa',
+        'affiliate marketing for african bloggers',
+        'affiliate marketing for african influencers',
+        'best affiliate offers in africa',
+        'affiliate marketing platforms for africans',
+        'affiliate marketing tips africa',
+        'africa affiliate marketing platforms',
+        'top affiliate marketers in africa',
+        'how to make money with affiliate marketing in africa'
+      ];
+  
+      const zimbabweKeywords = [
+        'affiliate marketing zimbabwe',
+        'zimbabwe affiliate marketing platforms',
+        'top affiliate programs zimbabwe',
+        'highest paying affiliate programs zimbabwe',
+        'affiliate marketing in zimbabwe',
+        'best affiliate programs in zimbabwe',
+        'how to start affiliate marketing in zimbabwe',
+        'zimbabwe affiliate marketing programs',
+        'affiliate marketing websites zimbabwe',
+        'promote affiliate products zimbabwe',
+        'affiliate marketing companies zimbabwe',
+        'best affiliate offers zimbabwe',
+        'affiliate marketing networks in zimbabwe',
+        'affiliate marketing zimbabwe opportunities',
+        'affiliate marketing jobs zimbabwe',
+        'affiliate marketers zimbabwe',
+        'affiliate marketing trends zimbabwe',
+        'affiliate marketing tips zimbabwe',
+        'zimbabwe affiliate marketing success stories',
+        'best paying affiliate programs zimbabwe',
+        'highly rated affiliate programs zimbabwe',
+        'affiliate marketing earning potential zimbabwe',
+        'top affiliate marketing platforms in zimbabwe',
+        'best affiliate marketers zimbabwe',
+        'zimbabwe affiliate marketing success',
+        'affiliate marketing commission zimbabwe',
+        'affiliate marketing zimbabwe networks',
+        'how to promote affiliate products zimbabwe',
+        'best affiliate networks zimbabwe',
+        'affiliate marketing affiliate programs zimbabwe',
+        'affiliate marketers making money zimbabwe',
+        'affiliate program opportunities zimbabwe',
+        'affiliate marketing 2024 zimbabwe',
+        'best affiliate marketing strategies zimbabwe',
+        'promote products and earn in zimbabwe',
+        'affiliate marketing opportunities zimbabwe',
+        'earning affiliate commissions zimbabwe',
+        'best paying affiliate programs zimbabwe 2024',
+        'affiliate marketing beginner guide zimbabwe',
+        'affiliate program sign-up zimbabwe',
+        'top earning affiliate programs zimbabwe',
+        'affiliate marketing tools zimbabwe',
+        'affiliate marketing platforms zimbabwe',
+        'affiliate programs zimbabwe that work',
+        'how to make money with affiliate marketing zimbabwe',
+        'affiliate marketing networks zimbabwe',
+        'best affiliate sites in zimbabwe',
+        'affiliate income zimbabwe',
+        'zimbabwe affiliate income',
+        'affiliate marketers income zimbabwe',
+        'best affiliate commissions zimbabwe',
+        'affiliate marketing websites for zimbabwe',
+        'top affiliate products zimbabwe',
+        'affiliate program sign-up zimbabwe',
+        'affiliate programs in zimbabwe',
+        'affiliate marketing techniques zimbabwe',
+        'affiliate marketing tips zimbabwe',
+        'affiliate marketers earning big in zimbabwe',
+        'affiliate marketing program zimbabwe',
+        'affiliate marketing for beginners zimbabwe',
+        'zimbabwe affiliate marketing companies'
+      ];
+  
+      // Hide all sections before showing the matching one
+      document.querySelectorAll('.affiliate-section').forEach(function(section) {
+        section.classList.add('hidden');
+      });
+  
+      // Check if any keyword exists in the search input and show the corresponding section
+      if (keywords.some(keyword => searchInput.includes(keyword))) {
+        document.getElementById('affilateMarketingWorld').classList.remove('hidden');
+      }
+  
+      if (nigeriaKeywords.some(keyword => searchInput.includes(keyword))) {
+        document.getElementById('AffiliateMarketingNigeria').classList.remove('hidden');
+      }
+  
+      if (tanzaniaKeywords.some(keyword => searchInput.includes(keyword))) {
+        document.getElementById('affiliateMarketingTanzania').classList.remove('hidden');
+      }
+  
+      if (ghanaKeywords.some(keyword => searchInput.includes(keyword))) {
+        document.getElementById('affiliateMarketingGhana').classList.remove('hidden');
+      }
+  
+      if (zimbabweKeywords.some(keyword => searchInput.includes(keyword))) {
+        document.getElementById('affiliateMarketingZimbabwe').classList.remove('hidden');
+      }
+  
+      if (africaKeywords.some(keyword => searchInput.includes(keyword))) {
+        document.getElementById('affiliateMarketingAfrica').classList.remove('hidden');
+      }
+    });
+  </script>
+  
 
 
